@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="/to do app/CSS/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="main">
+        <div class="todo-header">
+            <i class="fas fa-bars menu-icon"></i>
+            Website to do
+        </div>
+        <div class="todo-list">
+            <ul>
+                <li>
+                    <input type="checkbox">
+                    <span>Styleguide creation</span>
+                </li>
+                <li>
+                    <input type="checkbox" checked>
+                    <span>Send wireframes</span>
+                    <i class="fas fa-trash delete-icon"></i>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <span>Readability About page</span>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <span>Check color contrast</span>
+                </li>
+            </ul>
+        </div>
+        <div class="add">
+            <button class="add-task-btn" id="add-task-btn">+ New task</button>
+        </div>
+    </div>
+    <script src="/to do app/JS/app.js"></script>
+</body>
+</html>
