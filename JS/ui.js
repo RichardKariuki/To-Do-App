@@ -1,6 +1,6 @@
 import { Storage } from "./storage.js";
 
-export class UI {
+/*export class UI {
     static displayTasks() {
         const tasks = Storage.getTasks();
         const taskList = document.getElementById("task-list");
@@ -16,4 +16,23 @@ export class UI {
             taskList.appendChild(li);
         });
     }
+}*/
+export class UI {
+    static displayTasks() {
+        const taskList = document.getElementById("task-list");
+        if (!taskList) {
+            console.error("Element with ID 'task-list' not found!");
+            return;
+        }
+        
+        const tasks = Storage.getTasks();
+        taskList.innerHTML = ""; // Clear list before adding new tasks
+
+        tasks.forEach((task) => {
+            const li = document.createElement("li");
+            li.textContent = `${task.title} (Due: ${task.dueDate})`;
+            taskList.appendChild(li);
+        });
+    }
 }
+

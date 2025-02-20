@@ -18,14 +18,101 @@ document.getElementById("add-task-btn").addEventListener("click", () => {
     UI.displayTasks();
 });
 
-document.getElementById("task-list").addEventListener("click", (e) => {
+document.addEventListener("DOMContentLoaded", () => {
+    const addTaskBtn = document.getElementById("add-task-btn");
+
+    if (!addTaskBtn) {
+        console.error("Button with ID 'add-task-btn' not found!");
+        return;
+    }
+
+    addTaskBtn.addEventListener("click", () => {
+        console.log("Button clicked!");
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const addTaskBtn = document.getElementById("add-task-btn");
+
+    if (!addTaskBtn) {
+        console.error("Button with ID 'add-task-btn' not found!");
+        return;
+    }
+
+    addTaskBtn.addEventListener("click", () => {
+        const titleInput = document.getElementById("task-title");
+        const dateInput = document.getElementById("task-date");
+
+        const title = titleInput.value.trim();
+        const dueDate = dateInput.value.trim();
+
+        if (!title || !dueDate) {
+            console.error("Please enter both task title and due date.");
+            alert("Please enter task details!");
+            return;
+        }
+        console.log(`Task: ${title}, Due Date: ${dueDate}`);
+    });
+});
+/*
+document.addEventListener("DOMContentLoaded", () => {
+    const addTaskBtn = document.getElementById("add-task-btn");
+    if (addTaskBtn) {
+        addTaskBtn.addEventListener("click", () => {
+            const title = document.getElementById("task-title").value;
+            const dueDate = document.getElementById("task-date").value;
+
+            if (title === "" || dueDate === "") {
+                alert("Please enter task details!");
+                return;
+            }
+
+            const task = new Task(title, dueDate);
+            const tasks = Storage.getTasks();
+            tasks.push(task);
+            Storage.saveTasks(tasks);
+
+            UI.displayTasks();
+        });
+    } else {
+        console.error("Button with ID 'add-task-btn' not found!");
+    }
+});
+*/
+document.getElementById("add-task-btn").addEventListener("click", () => {
+    const titleInput = document.getElementById("task-title");
+    const dateInput = document.getElementById("task-date");
+
+    if (!titleInput || !dateInput) {
+        console.error("Input fields not found!");
+        return;
+    }
+
+    const title = titleInput.value;
+    const dueDate = dateInput.value;
+
+    if (title === "" || dueDate === "") {
+        alert("Please enter task details!");
+        return;
+    }
+
+    const task = new Task(title, dueDate);
+    const tasks = Storage.getTasks();
+    tasks.push(task);
+    Storage.saveTasks(tasks);
+
+    UI.displayTasks();
+});
+
+/*document.getElementById("task-list").addEventListener("click", (e) => {
     if (e.target.classList.contains("delete")) {
         let tasks = Storage.getTasks();
         tasks = tasks.filter(task => task.id != e.target.dataset.id);
         Storage.saveTasks(tasks);
         UI.displayTasks();
     }
-});
+});*/
 // Selecting elements
 const taskList = document.getElementById("taskList");
 const addTaskBtn = document.getElementById("addTaskBtn");
@@ -35,7 +122,7 @@ let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 // Function to render tasks
 const renderTasks = () => {
-    taskList.innerHTML = "";
+    //taskList.innerHTML = "";
     tasks.forEach((task, index) => {
         const li = document.createElement("li");
         li.className = "task-item";
@@ -86,9 +173,9 @@ const saveAndRender = () => {
 };
 
 // Event Listeners
-addTaskBtn.addEventListener("click", addTask);
+//addTaskBtn.addEventListener("click", addTask);
 
-taskList.addEventListener("click", (e) => {
+/*taskList.addEventListener("click", (e) => {
     const index = e.target.dataset.index;
     if (e.target.tagName === "INPUT") {
         toggleTask(index);
@@ -97,7 +184,7 @@ taskList.addEventListener("click", (e) => {
     } else if (e.target.classList.contains("delete-btn")) {
         deleteTask(index);
     }
-});
+});*/
 
 // Initial render
 renderTasks();

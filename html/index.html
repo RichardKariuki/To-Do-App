@@ -13,7 +13,7 @@
             <i class="fas fa-bars menu-icon"></i>
             Website to do
         </div>
-        <div class="todo-list">
+        <div class="todo-list" id="task-list">
             <ul>
                 <li>
                     <input type="checkbox">
@@ -22,7 +22,6 @@
                 <li>
                     <input type="checkbox" checked>
                     <span>Send wireframes</span>
-                    <i class="fas fa-trash delete-icon"></i>
                 </li>
                 <li>
                     <input type="checkbox">
@@ -36,8 +35,12 @@
         </div>
         <div class="add">
             <button class="add-task-btn" id="add-task-btn">+ New task</button>
+            <input type="text" id="task-title" placeholder="Enter task title">
+            <input type="date" id="task-date">
+            <button id="add-task-btn">Add Task</button>
+            <ul id="task-list"></ul>
         </div>
     </div>
-    <script src="/to do app/JS/app.js"></script>
+    <script type="module" src="/to do app/JS/app.js"></script>
 </body>
-</html>
+</html>git add .
